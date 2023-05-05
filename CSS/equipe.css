@@ -1,0 +1,78 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: var(--font-tim);
+    color: var(--cor-branco);
+}
+
+
+.equipe__container{
+    min-height: 100vh;
+    position: relative;
+  }
+
+.main__equipe{
+    background-color: var(--cor-azul-1);
+}
+
+.team__workers{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 2em
+}
+
+.team__worker{
+    border-radius: 15%;
+    width: auto;
+    margin: 1em
+    
+}
+
+.team__worker img{
+    border-radius: 50%;
+    box-shadow: 0px 2px 2px var(--cor-sombra)
+}
+.team__worker i{
+    font-size: 96px;
+    border-radius: 50%;
+    box-shadow: 0px 2px 2px var(--cor-sombra);
+}
+
+.team__worker__planejamento,
+.team__worker__governanca{
+    display: flex;
+    border-top: 3px solid var(--cor-vermelho);
+    margin:0.5em
+}
+
+.equipe__title{
+    font-size: 18px;
+    border-bottom: 3px solid var(--cor-vermelho);
+    padding: 0.5em;
+}
+
+.equipe__text{
+    display: grid;
+    place-items: center;
+    margin: 2em 6em;
+
+}
+
+.equipe__paragraph{
+    margin: 1em 0em;
+    width: 60em;
+    text-align: justify;
+}
+
+.team__worker__list{
+    margin-left: 2em;
+}
+
+
+.team__worker.active,
+.team__worker:hover{
+    background-color: var(--cor-vermelho);
+}

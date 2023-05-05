@@ -1,0 +1,49 @@
+.logo {
+    width: 18%; /* Define a largura da imagem como 50% do tamanho do elemento pai */
+    height: 18%; /* Mantém a proporção original da altura em relação à largura */
+    margin-right: 1em;
+}
+
+.icon {
+    font-size: 1em;
+    color: var(--cor-vermelho)
+}
+
+.header{
+    display:flex;
+    align-items: center; /* Alinhar verticalmente */
+    background-color: var(--cor-azul-principal);
+    padding: 1em 0em;
+
+
+}
+
+object {
+    display: block;
+  }
+
+.header__title{
+    color: var(--cor-branco);
+    font-family: var(--font-tim);
+    font-size: 20px;
+    align-items: center;   
+    display: flex; 
+    margin: 0em 10em 0em 2em;
+    white-space: nowrap; /* impede que o texto quebre em várias linhas */
+    text-transform: uppercase;
+}
+
+.menu-list,
+.lista-menu__link{
+    color: var(--cor-branco);
+    font-family: var(--font-tim);
+    font-size: 12px;
+    align-items: center;    
+    display: flex;
+    justify-content: flex-start;
+    text-decoration: none;
+    padding: 0 2em ;
+    gap: 1em;
+ 
+}
+

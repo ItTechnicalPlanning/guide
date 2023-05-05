@@ -1,0 +1,38 @@
+@import url(header.css);
+@import url(main.css);
+@import url(equipe.css);
+
+@import url(fluxos/fluxos__general.css);
+@import url(fluxos/fluxos__tree.css);
+@import url(fluxos/fluxo__faturamento.css);
+@import url(fluxos/fluxo__gate.css);
+@import url(fluxos/fluxo__contratos.css);
+@import url(fluxos/fluxos__ppm.css);
+@import url(fluxos/fluxos__investment-tree.css);
+
+@import url(documentos.css);
+@import url(footer.css);
+
+:root{
+    --cor-azul-principal: #004a98;
+    --cor-azul-1: #003264;
+    --cor-azul-2: #376ea5;
+    --cor-azul-3: #82b9e6;
+    --cor-vermelho: hsl(350, 100%, 46%);
+    --cor-preto: #000000;
+    --cor-sombra: #011d3f;
+    --cor-branco: #ffffff;
+    --cor-linha-fluxo: hsl(350, 100%, 46%);
+    --font-tim: 'TIM Sans', sans-serif;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Coluna para organizar header, main e footer verticalmente */
+    min-height: 100vh; /* Defina a altura mínima do corpo para ocupar pelo menos a altura total da viewport */
+    overflow-x: hidden; /* Desabilita a rolagem horizontal */
+    overflow-y: hidden; 
+  }

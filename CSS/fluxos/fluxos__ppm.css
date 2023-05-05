@@ -1,0 +1,88 @@
+.ppm__demandas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.5em; 
+    margin: 2em
+  }
+  
+/* Define a posição de cada item */
+.ppm__demanda:nth-child(1) {
+    grid-column: 1;
+}
+
+.ppm__demanda:nth-child(2) {
+    grid-column: 2;
+}
+
+.ppm__demanda:nth-child(3) {
+    grid-column: 3;
+}
+
+.ppm__demanda{
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    border-radius: 1em;
+    border: 2px solid var(--cor-vermelho);
+    padding: 0.5em;
+    height: 4em;
+    width: 8em;
+
+}
+
+.ppm__demanda span, 
+.ppm__demanda i{
+    font-size: 14px;
+    margin-left: 0.5em;
+}
+
+.ppm__demanda i{
+    color: var(--cor-vermelho)
+}
+  /* ... adicione as definições para todos os itens ... */
+
+.ppm__demandas__and__title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+}
+
+
+
+.ppm__demanda__title {
+    font-size: 18px;
+    font-weight: bold;
+}
+.ppm__text__title{
+    margin-bottom: 1em;
+}
+
+.ppm__text__and__title{
+    margin: 0em 2em 1em 1em;
+}
+
+.ppm__demandas__and__text{
+    display: flex;
+    margin: 1em 4em;
+    text-align: justify;
+}
+
+.span__ppm{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 2em;
+    margin-left: 10%;
+
+}
+
+
+
+.ppm__demanda.active i,
+.ppm__demanda.active,
+.ppm__demanda:hover i,
+.ppm__demanda:hover{
+    background-color: var(--cor-vermelho);
+    color: var(--or-branco);
+}
+

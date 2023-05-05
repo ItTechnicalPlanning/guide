@@ -1,0 +1,42 @@
+.fluxo__gate__cointainer{
+    margin: 0 18%
+}
+
+.fluxo__gate__cointainer p {
+    text-align: justify;
+}
+
+
+
+.fluxo__gate__processes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fluxo__gate__box {
+    display: flex;
+    width: 15em;
+    height: 5em;
+    margin: 3em 1em;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em; 
+  }
+  
+  .gate__box__text {
+    width: 8em;
+  }
+  
+.fluxo__gate__box:hover{
+    background-color: var(--cor-vermelho);
+}
+
+.span__gate{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 4em;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}

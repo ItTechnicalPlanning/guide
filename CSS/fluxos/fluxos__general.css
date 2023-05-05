@@ -1,0 +1,95 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: var(--font-tim);
+    color: var(--cor-branco);
+}
+
+
+.fluxo__faturamento,
+.fluxo__operacoes,
+.fluxo__gate,
+.fluxo__contrato,
+.fluxo__ppm,
+.fluxo__investment-tree{
+    min-height: 100vh;
+    position: relative;
+}
+
+.main__fluxos{
+    background-color: var(--cor-azul-1);
+}
+
+.fluxos__container__title{
+    text-transform: uppercase;
+    border-bottom: 3px solid var(--cor-vermelho); /* Adiciona uma linha vermelha com espessura de 3px */
+    padding: 1em ; 
+    color: var(--cor-branco);
+    margin: 1% 5% 0 5%;
+    font-size: 16px;
+
+}
+
+.fluxos__text__container{
+    display: flex;
+    justify-content: center;
+}
+
+.fluxos__tree__container{
+    text-align: center;
+}
+
+.fluxos__container__paragraph{
+    text-align: justify;
+    width: 30em;
+    height: 14em;
+}   
+
+.fluxos__paragraph__highlight{
+    color: var(--cor-vermelho);
+    font-weight: 600;
+
+}
+
+.icon__mouse{
+    padding-right: 1em;
+}
+
+.fluxos__container__text__and__tree{
+    padding-top: 2em;
+}
+
+.button__down{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  font-size: 24px;
+  float: right;
+}
+
+.button__up{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 60px;
+  margin-right: 20px;
+  font-size: 24px;
+  float: right;
+
+}
+
+.fluxo__gate__box,
+.fluxo__process__box{
+    padding: 2em;
+    border: 3px solid var(--cor-vermelho);
+    border-radius: 1em;
+    margin: 2em;
+}
+
+.button__down i:hover,
+.button__up i:hover{
+    color: var(--cor-vermelho);
+}
