@@ -35,7 +35,9 @@
     border-radius: 50%;
     box-shadow: 0px 2px 2px var(--cor-sombra);
     height: 6em;
+    max-height: 6em;
 }
+
 .team__worker i{
     font-size: 96px;
     border-radius: 50%;
