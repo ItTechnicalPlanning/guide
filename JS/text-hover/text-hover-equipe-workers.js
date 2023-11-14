@@ -1,89 +1,82 @@
-function createBoxHandler(boxClass, titleSelector, paragraphSelector, state) {
-  const boxes = document.querySelectorAll(`.${boxClass}`);
-  const title = document.querySelector(titleSelector);
-  const paragraph = document.querySelector(paragraphSelector);
+class TeamManager {
+  constructor(workers, equipeTitle, equipeParagraph, state) {
+    this.workers = workers;
+    this.equipeTitle = equipeTitle;
+    this.equipeParagraph = equipeParagraph;
 
-  let boxState = {
-    currentBox: null,
-    isShowingBox: false,
-    isClicked: false
-  };
+    this.clickedWorker = null;
+    this.workerState = {
+      currentBox: null,
+      isShowingBox: false,
+      isClicked: false
+    };
 
-  const defaultTitle = title.innerHTML;
-  const defaultParagraph = paragraph.innerHTML;
+    this.defaultEquipeTitle = this.equipeTitle.innerHTML;
+    this.defaultEquipeParagraph = this.equipeParagraph.innerHTML;
 
-  boxes.forEach(box => {
-    const boxTitle = box.getAttribute(`data-${state}-title`);
-    const boxParagraph = box.getAttribute(`data-${state}-paragraph`);
+    this.setupEventListeners();
+  }
 
-    box.addEventListener('click', () => {
-      if (boxState.isClicked && boxState.currentBox === box) {
-        return;
-      }
+  showWorkerInfo(worker) {
+    const title = worker.getAttribute(`data-${state}-title`);
+    const paragraph = worker.getAttribute(`data-${state}-paragraph`);
 
-      if (boxState.currentBox === box) {
-        boxState.isShowingBox = false;
-        title.innerHTML = defaultTitle;
-        paragraph.innerHTML = defaultParagraph;
+    if (this.workerState.isClicked && this.workerState.currentBox === worker) {
+      return;
+    }
+
+    if (this.workerState.currentBox === worker) {
+      this.workerState.isShowingBox = false;
+      this.equipeTitle.innerHTML = this.defaultEquipeTitle;
+      this.equipeParagraph.innerHTML = this.defaultEquipeParagraph;
+    } else {
+      this.clickedWorker = worker;
+      this.workerState.isClicked = true;
+      this.workerState.currentBox = worker;
+      this.workerState.isShowingBox = true;
+      this.equipeTitle.innerHTML = title || this.defaultEquipeTitle;
+      this.equipeParagraph.innerHTML = paragraph || this.defaultEquipeParagraph;
+    }
+  }
+
+  handleWorkerClick(event) {
+    const clickedWorker = event.target.closest('.team__worker');
+    this.workers.forEach(worker => {
+      if (worker === clickedWorker) {
+        worker.classList.add('active');
+        this.showWorkerInfo(clickedWorker);
       } else {
-        clickedBox = box;
-        boxState.isClicked = true;
-        boxState.currentBox = box;
-        boxState.isShowingBox = true;
-        title.innerHTML = boxTitle || defaultTitle;
-        paragraph.innerHTML = boxParagraph || defaultParagraph;
-      }
-    });
-
-    box.addEventListener('mouseover', () => {
-      if (boxState.isShowingBox) {
-        return;
-      }
-
-      title.innerHTML = boxTitle || defaultTitle;
-      paragraph.innerHTML = boxParagraph || defaultParagraph;
-    });
-
-    box.addEventListener('mouseout', () => {
-      if (boxState.isShowingBox) {
-        return;
-      }
-
-      title.innerHTML = defaultTitle;
-      paragraph.innerHTML = defaultParagraph;
-    });
-  });
-
-  function bgClicker(event) {
-    const clickedBox = event.target.closest(`.${boxClass}`);
-    boxes.forEach(box => {
-      if (box === clickedBox) {
-        box.classList.add('active');
-      } else {
-        box.classList.remove('active');
+        worker.classList.remove('active');
       }
     });
   }
 
-  boxes.forEach(box => {
-    box.addEventListener('click', bgClicker);
-  });
+  setupEventListeners() {
+    this.workers.forEach(worker => {
+      worker.addEventListener('click', (event) => this.handleWorkerClick(event));
+      worker.querySelector('img').addEventListener('click', (event) => {
+        event.stopPropagation();
+        this.handleWorkerClick(event);
+      });
+    });
 
-  document.addEventListener('click', function (event) {
-    const clickedElement = event.target;
-    if (!clickedElement.classList.contains(boxClass)) {
-      boxState.isClicked = false;
-      boxState.isShowingBox = false;
-      boxState.currentBox = null;
-      title.innerHTML = defaultTitle;
-      paragraph.innerHTML = defaultParagraph;
-      boxes.forEach(box => box.classList.remove('active'));
-    }
-  });
+    document.addEventListener('click', (event) => {
+      const clickedElement = event.target;
+      if (!clickedElement.classList.contains('team__worker')) {
+        this.workerState.isClicked = false;
+        this.workerState.isShowingBox = false;
+        this.workerState.currentBox = null;
+        this.equipeTitle.innerHTML = this.defaultEquipeTitle;
+        this.equipeParagraph.innerHTML = this.defaultEquipeParagraph;
+        this.workers.forEach(worker => worker.classList.remove('active'));
+      }
+    });
+  }
 }
 
-// Usando a função para criar instâncias para cada conjunto de elementos
-createBoxHandler('team__worker', '.equipe__title', '.equipe__paragraph', 'worker');
-createBoxHandler('contrato__process', '.contrato__text__title', '.contrato__text__paragraph', 'contrato');
-createBoxHandler('investment', '.investment-tree__title', '.investment-tree__paragraph', 'investment');
-createBoxHandler('ppm__demanda', '.ppm__text__title', '.ppm__text', 'demanda');
+
+const workers = document.querySelectorAll('.team__worker');
+const equipeTitle = document.querySelector('.equipe__title');
+const equipeParagraph = document.querySelector('.equipe__paragraph');
+const state = 'worker'
+const teamManager = new TeamManager(workers, equipeTitle, equipeParagraph, state);
