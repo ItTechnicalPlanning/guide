@@ -41,7 +41,7 @@ demandaBoxes.forEach(demandaBox => {
     }
 
     const title = demandaBox.getAttribute('data-demanda-title');
-    const paragraph = demandaBox.getAttribute('data-demanda-text');
+    const paragraph = demandaBox.getAttribute('data-demanda-paragraph');
     demandaTitle.innerHTML = title || defaultDemandaTitle;
     demandaText.innerHTML = paragraph || defaultDemandaText;
 
@@ -91,9 +91,6 @@ function demandaBgClicker(event) {
   });
   
   
-
-
-
 
 // Quando clicar fora da caixa, voltar para o padrão
 document.addEventListener('click', function(event) {

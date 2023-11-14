@@ -1,99 +1,89 @@
-const workers = document.querySelectorAll('.team__worker');
-const equipeTitle = document.querySelector('.equipe__title');
-const equipeParagraph = document.querySelector('.equipe__paragraph');
+function createBoxHandler(boxClass, titleSelector, paragraphSelector, state) {
+  const boxes = document.querySelectorAll(`.${boxClass}`);
+  const title = document.querySelector(titleSelector);
+  const paragraph = document.querySelector(paragraphSelector);
 
-let clickedWorker = null;
-let workerState = {
-  currentBox: null,
-  isShowingBox: false,
-  isClicked: false
-};
+  let boxState = {
+    currentBox: null,
+    isShowingBox: false,
+    isClicked: false
+  };
 
-const defaultEquipeTitle = equipeTitle.innerHTML;
-const defaultEquipeParagraph = equipeParagraph.innerHTML;
+  const defaultTitle = title.innerHTML;
+  const defaultParagraph = paragraph.innerHTML;
 
-workers.forEach(worker => {
-  const title = worker.getAttribute('data-worker-title');
-  const paragraph = worker.getAttribute('data-worker-paragraph');
+  boxes.forEach(box => {
+    const boxTitle = box.getAttribute(`data-${state}-title`);
+    const boxParagraph = box.getAttribute(`data-${state}-paragraph`);
 
-  worker.addEventListener('click', () => {
-    if (workerState.isClicked && workerState.currentBox === worker) {
-      return;
-    }
+    box.addEventListener('click', () => {
+      if (boxState.isClicked && boxState.currentBox === box) {
+        return;
+      }
 
-    if (workerState.currentBox === worker) {
-      workerState.isShowingBox = false;
-      equipeTitle.innerHTML = defaultEquipeTitle;
-      equipeParagraph.innerHTML = defaultEquipeParagraph;
-    } else {
-      clickedWorker = worker;
-      workerState.isClicked = true;
-      workerState.currentBox = worker;
-      workerState.isShowingBox = true;
-      equipeTitle.innerHTML = title || defaultEquipeTitle;
-      equipeParagraph.innerHTML = paragraph || defaultEquipeParagraph;
-    }
+      if (boxState.currentBox === box) {
+        boxState.isShowingBox = false;
+        title.innerHTML = defaultTitle;
+        paragraph.innerHTML = defaultParagraph;
+      } else {
+        clickedBox = box;
+        boxState.isClicked = true;
+        boxState.currentBox = box;
+        boxState.isShowingBox = true;
+        title.innerHTML = boxTitle || defaultTitle;
+        paragraph.innerHTML = boxParagraph || defaultParagraph;
+      }
+    });
+
+    box.addEventListener('mouseover', () => {
+      if (boxState.isShowingBox) {
+        return;
+      }
+
+      title.innerHTML = boxTitle || defaultTitle;
+      paragraph.innerHTML = boxParagraph || defaultParagraph;
+    });
+
+    box.addEventListener('mouseout', () => {
+      if (boxState.isShowingBox) {
+        return;
+      }
+
+      title.innerHTML = defaultTitle;
+      paragraph.innerHTML = defaultParagraph;
+    });
   });
 
-  worker.addEventListener('mouseover', () => {
-    if (workerState.isShowingBox) {
-      return;
-    }
+  function bgClicker(event) {
+    const clickedBox = event.target.closest(`.${boxClass}`);
+    boxes.forEach(box => {
+      if (box === clickedBox) {
+        box.classList.add('active');
+      } else {
+        box.classList.remove('active');
+      }
+    });
+  }
 
-    const title = worker.getAttribute('data-worker-title');
-    const paragraph = worker.getAttribute('data-worker-paragraph');
-    equipeTitle.innerHTML = title || defaultEquipeTitle;
-    equipeParagraph.innerHTML = paragraph || defaultEquipeParagraph;
-
-    
+  boxes.forEach(box => {
+    box.addEventListener('click', bgClicker);
   });
 
-  worker.addEventListener('mouseout', () => {
-    if (workerState.isShowingBox) {
-      return;
+  document.addEventListener('click', function (event) {
+    const clickedElement = event.target;
+    if (!clickedElement.classList.contains(boxClass)) {
+      boxState.isClicked = false;
+      boxState.isShowingBox = false;
+      boxState.currentBox = null;
+      title.innerHTML = defaultTitle;
+      paragraph.innerHTML = defaultParagraph;
+      boxes.forEach(box => box.classList.remove('active'));
     }
-
-    equipeTitle.innerHTML = defaultEquipeTitle;
-    equipeParagraph.innerHTML = defaultEquipeParagraph;
   });
-});
-
-
-
-// mantem a caixa vermelha enquanto está clicado
-
-function handleWorkerClick(event) {
-  const clickedWorker = event.target;
-  workers.forEach(worker => {
-    if (worker === clickedWorker) {
-      worker.classList.add('active');
-      worker === clickedWorker
-      console.log(worker === clickedWorker)
-
-    } else {
-      worker.classList.remove('active');
-    }
-    
-  });
-
 }
 
-workers.forEach(worker => {
-  worker.addEventListener('click', handleWorkerClick);
-
-});
-
-
-// Quando clicar fora da caixa, voltar para o padrão
-document.addEventListener('click', function(event) {
-    const clickedElement = event.target;
-    if (!clickedElement.classList.contains('team__worker')) {
-      workerState.isClicked = false;
-      workerState.isShowingBox = false;
-      workerState.currentBox = null;
-      equipeTitle.innerHTML = defaultEquipeTitle;
-      equipeParagraph.innerHTML = defaultEquipeParagraph;
-      workers.forEach(worker => worker.classList.remove('active'));
-    }
-  });
-  
+// Usando a função para criar instâncias para cada conjunto de elementos
+createBoxHandler('team__worker', '.equipe__title', '.equipe__paragraph', 'worker');
+createBoxHandler('contrato__process', '.contrato__text__title', '.contrato__text__paragraph', 'contrato');
+createBoxHandler('investment', '.investment-tree__title', '.investment-tree__paragraph', 'investment');
+createBoxHandler('ppm__demanda', '.ppm__text__title', '.ppm__text', 'demanda');

@@ -1,4 +1,3 @@
-
 .tree {
     width: 100%;
     height: auto;
@@ -122,11 +121,25 @@
 }
 
 
-/* .tree__branch {
-    display: none;
+@media (max-width: 768px) {
+
+
+    .tree li {
+        padding: 10px 0px;
+    }
+
+    .tree a {
+        padding: 5px 0;
+    }
+
+    .tree li a span {
+        border-radius: 5px;
+        padding: 5px 0;
+        font-size: 12px;
+    }
+
+    .tree__container{
+        margin: 0
+    }
+
 }
-
-
-.tree__root__son:hover + .tree__branch {
-    display: block;
-} */

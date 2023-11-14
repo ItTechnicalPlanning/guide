@@ -1,52 +1,50 @@
-.contrato__processes{
+.contrato__processes {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 1em;
 }
 
-
-.contrato__process{
+.contrato__process {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 2em;
-    box-shadow: 0 2px 4px var(--cor-sombra);
+    box-shadow: 0 4px 4px var(--cor-sombra);
+    background-color: var(--cor-azul-principal);
     margin: 0 1em;
     padding: 1em;
     width: 8em;
     height: 8em;
 }
 
-.contrato__process i{
+.contrato__process i {
     font-size: 32px;
     margin-bottom: 1em;
 }
-.fluxo__contrato__title{
+
+.fluxo__contrato__title {
     font-size: 24px;
     color: var(--cor-vermelho);
     font-weight: 600;
 }
 
-.fluxo__contrato__container{
+.fluxo__contrato__container {
     margin: 0 15%;
-
 }
 
-.fluxo__contrato__text{
+.fluxo__contrato__text {
     margin-top: 1em;
     text-align: justify;
-    
 }
 
-.fluxo__contrato__text p{
+.fluxo__contrato__text p {
     margin-top: 1em;
     text-align: justify;
-    
 }
 
-.span__contratos{
+.span__contratos {
     position: absolute;
     bottom: 0;
     margin-bottom: 1em;
@@ -55,11 +53,27 @@
 }
 
 .contrato__process:hover,
-.contrato__process.active{
+.contrato__process.active {
     background-color: var(--cor-vermelho);
 }
 
 .contrato__process.active .fluxo__contrato__title,
 .contrato__process:hover .fluxo__contrato__title {
     color: white;
-  }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .contrato__processes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contrato__process {
+        margin: 1em 0;
+    }
+
+    .fluxo__contrato__container {
+        margin: 0 10%;
+    }
+}

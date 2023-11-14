@@ -5,7 +5,7 @@
     margin: 2em
   }
   
-/* Define a posição de cada item */
+
 .ppm__demanda:nth-child(1) {
     grid-column: 1;
 }
@@ -39,7 +39,7 @@
 .ppm__demanda i{
     color: var(--cor-vermelho)
 }
-  /* ... adicione as definições para todos os itens ... */
+
 
 .ppm__demandas__and__title{
     display: flex;
@@ -76,8 +76,6 @@
 
 }
 
-
-
 .ppm__demanda.active i,
 .ppm__demanda.active,
 .ppm__demanda:hover i,
@@ -86,3 +84,37 @@
     color: var(--or-branco);
 }
 
+@media only screen and (max-width: 768px) {
+
+
+    .ppm__demandas__and__text{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ppm__demanda {
+        width: 100%; 
+        margin-bottom: 1em;
+    }
+
+    .span__ppm {
+        margin-left: 0; 
+        transform: none;
+        text-align: center; 
+    }
+    
+    .ppm__demandas__and__text {
+        margin: 1em; 
+    }
+    
+    .ppm__text__and__title {
+        margin: 0em 1em 1em 1em; 
+    }
+    .ppm__demanda:nth-child(1) {
+        grid-column: 1;
+    }
+    
+    .ppm__demanda:nth-child(3) {
+        grid-column: 1;
+    }
+}

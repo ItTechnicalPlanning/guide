@@ -31,8 +31,14 @@ html {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column; /* Coluna para organizar header, main e footer verticalmente */
-    min-height: 100vh; /* Defina a altura mínima do corpo para ocupar pelo menos a altura total da viewport */
-    overflow-x: hidden; /* Desabilita a rolagem horizontal */
-    overflow-y: hidden; 
-  }
+    flex-direction: column; 
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+  @media screen and (max-width: 1024px) {
+
+    html, body{ 
+        overflow-y:visible;
+    }
+}

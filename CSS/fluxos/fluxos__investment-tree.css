@@ -1,6 +1,6 @@
 .investment-tree__and__text{
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: center;
     margin: 0em 5em
 }
@@ -16,7 +16,6 @@
 
 .investment{
     display: flex;
-    justify-content: baseline;
     align-items: center;
     border-radius: 1em;
     border: 2px solid var(--cor-vermelho);
@@ -24,12 +23,14 @@
     padding: 1em;
     height: 3em;
     width: 15em;
-    margin: 0.5em 0em
+    margin: 0.5em 0em;
+    gap: 1em
+
 
 }
 
-.investment__title{
-    margin-left: 1em;
+.investment-tree__title{
+    margin-bottom: 1em;
 }
 
 .icon-investment-tree{
@@ -45,11 +46,9 @@
 }
 
 .investment-tree__paragraph{
-    height: 20em;
-    width: 50em;
+    height: auto;
+    width: auto;
     text-align: justify;
-    margin-right: 2em;
-    margin-top: 1em;
 }
 
 
@@ -61,3 +60,20 @@
     color: var(--cor-branco)
 }
 
+@media only screen and (max-width: 768px) {
+
+    .investment-tree__and__text{
+        display: flex;
+        flex-direction: column;
+        margin: 2em
+    }
+
+    .ppm__demandas__title{
+        align-self: center;
+    }
+
+    .ppm__demanda{
+        text-align: left;
+    }
+    
+}

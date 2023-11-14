@@ -23,7 +23,7 @@
 
 .fluxos__container__title{
     text-transform: uppercase;
-    border-bottom: 3px solid var(--cor-vermelho); /* Adiciona uma linha vermelha com espessura de 3px */
+    border-bottom: 3px solid var(--cor-vermelho); 
     padding: 1em ; 
     color: var(--cor-branco);
     margin: 1% 5% 0 5%;
@@ -43,7 +43,7 @@
 .fluxos__container__paragraph{
     text-align: justify;
     width: 30em;
-    height: 14em;
+    height: auto;
 }   
 
 .fluxos__paragraph__highlight{
@@ -92,4 +92,55 @@
 .button__down i:hover,
 .button__up i:hover{
     color: var(--cor-vermelho);
+}
+
+@media only screen and (max-width: 768px) {
+    .fluxos__container__title {
+        margin: 1em 5%;
+    }
+    
+
+    .main__fluxos{
+        height: auto;
+    }
+
+    .fluxos__container__paragraph {
+        width: auto;
+        height: auto;
+    }
+
+    .fluxos__tree__container {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .fluxos__text__container{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        margin: 2em;
+        
+    }
+    
+    .fluxos__see-more ,
+    .button__down,
+    .button__up {
+        display: none;
+    }
+
+    .fluxo__faturamento,
+    .fluxo__operacoes,
+    .fluxo__gate,
+    .fluxo__contrato,
+    .fluxo__ppm,
+    .fluxo__investment-tree{
+        height: auto;
+    }
+
+    .fluxos__container__text__and__tree{
+        padding-top: 0em;
+        margin-top: 0;
+    }
+    
 }
