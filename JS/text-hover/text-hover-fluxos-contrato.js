@@ -60,8 +60,6 @@ contratoProcessBoxes.forEach(contratoProcessBox => {
 
 
 
-// mantem a caixa vermelha enquanto está clicado
-
 function contractBgClicker(event) {
   const clickedBox = event.target;
   contratoProcessBoxes.forEach(contratoProcessBox => {

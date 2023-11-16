@@ -61,19 +61,21 @@ demandaBoxes.forEach(demandaBox => {
 
 
 function demandaBgClicker(event) {
-    const clickedBox = event.target.closest('.ppm__demanda');
+  const clickedBox = event.target;
+  demandaBoxes.forEach(demandaBox => {
+    if (demandaBox === clickedBox) {
+      demandaBox.classList.add('active');
+      demandaBox === clickedBox
+      console.log(demandaBox === clickedBox)
+
+    } else {
+      demandaBox.classList.remove('active');
+    }
     
-    if (!clickedBox) return;
-    
-    demandaBoxes.forEach(demandaBox => {
-      if (demandaBox === clickedBox) {
-        demandaBox.classList.add('active');
-      } else {
-        demandaBox.classList.remove('active');
-      }
-    });
-  }
-  
+  });
+
+}
+
   function iconClicker(event) {
     const clickedIcon = event.target.closest('.icon-demanda');
     if (clickedIcon) {

@@ -1,8 +1,9 @@
 class TeamManager {
-  constructor(workers, equipeTitle, equipeParagraph, state) {
+  constructor(workers, equipeTitle, equipeParagraph, attribute) {
     this.workers = workers;
     this.equipeTitle = equipeTitle;
     this.equipeParagraph = equipeParagraph;
+    this.attribute = attribute
 
     this.clickedWorker = null;
     this.workerState = {
@@ -18,8 +19,8 @@ class TeamManager {
   }
 
   showWorkerInfo(worker) {
-    const title = worker.getAttribute(`data-${state}-title`);
-    const paragraph = worker.getAttribute(`data-${state}-paragraph`);
+    const title = worker.getAttribute(`data-${this.attribute}-title`);
+    const paragraph = worker.getAttribute(`data-${this.attribute}-paragraph`);
 
     if (this.workerState.isClicked && this.workerState.currentBox === worker) {
       return;
@@ -78,5 +79,5 @@ class TeamManager {
 const workers = document.querySelectorAll('.team__worker');
 const equipeTitle = document.querySelector('.equipe__title');
 const equipeParagraph = document.querySelector('.equipe__paragraph');
-const state = 'worker'
-const teamManager = new TeamManager(workers, equipeTitle, equipeParagraph, state);
+const attribute = 'worker'
+const teamManager = new TeamManager(workers, equipeTitle, equipeParagraph, attribute);
